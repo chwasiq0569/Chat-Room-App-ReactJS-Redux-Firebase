@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+$primary_bgColor: #f8f8f8;
+$secondary_iconsColor: #9fa7a7;
+$dull_textColor: #464949;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.posting__Section {
+  background-color: white;
+  padding: 0.5rem;
+  width: 95%;
+  height: 100%;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  .leftSide {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    .userProfile__Pic {
+      width: 2rem;
+      height: 2rem;
+      img {
+        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .posting__Text {
+      width: 100%;
+      height: auto;
+      display: flex;
+      textarea {
+        width: 100%;
+        height: 100%;
+        outline: none;
+        border: none;
+        overflow-wrap: break-word;
+        font-size: 0.85rem;
+        font-family: "Nunito", sans-serif;
+        position: relative;
+        white-space: pre-wrap;
+        resize: none; /* user can resize vertically, but width is fixed */
+        padding: 0.3rem;
+        background-color: $primary_bgColor;
+        border-radius: 1rem;
+      }
+      textarea::-webkit-scrollbar {
+        width: 12px;
+        background-color: white;
+      }
+      textarea::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px #e3e9e9;
+        background-color: #e3e9e9;
+      }
+    }
+  }
+  .rightSide {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    .uploadIcon,
+    .emojisIcon {
+      cursor: pointer;
+      margin-right: 0.7rem;
+    }
+  }
+}
+@media only screen and (max-width: 690px) {
+  .posting__Section {
+    width: 95%;
+    .leftSide {
+      .posting__Text {
+        width: 75%;
+        textarea {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

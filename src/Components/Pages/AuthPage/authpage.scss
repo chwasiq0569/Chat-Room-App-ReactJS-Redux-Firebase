@@ -1,0 +1,412 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+// font-family: 'Nunito', sans-serif;
+// font-family: 'Open Sans', sans-serif;
+// font-family: 'Poppins', sans-serif;
+// font-family: 'Roboto', sans-serif;
+// font-family: 'Montserrat', sans-serif;
+
+$primary_bgColor: #f8f8f8;
+$secondary_iconsColor: #9fa7a7;
+$dull_textColor: #464949;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.hide {
+  display: none;
+}
+.converstionComp__Wrapper {
+  width: 100%;
+  height: 100vh;
+  margin-left: 0;
+  background-color: #dcdcdb;
+  .inner__Wrapper {
+    width: 100%;
+    height: 100%;
+    background-color: #0847d5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .leftSide {
+      width: 100%;
+      height: 100%;
+      background: $primary_bgColor;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .brandIcon {
+      }
+      .authBox {
+        background-color: white;
+        padding-top: 1.5rem;
+        margin-top: 4rem;
+        width: 22rem;
+        height: 28rem;
+        border-radius: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        .userInfo {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            .usernameData,
+            .emailData,
+            .passwordData {
+              display: flex;
+              align-items: center;
+            }
+            input {
+              font-family: "Nunito", sans-serif;
+              width: 15.5rem;
+              height: 2rem;
+              font-size: 0.9rem;
+              border: 0;
+              color: $dull_textColor;
+              border-bottom: 2px inset #577eda;
+              color: $dull_textColor;
+              margin-left: 0.3rem;
+              padding: 0.3rem;
+              background-color: white;
+            }
+            .loginBtn {
+              margin-bottom: -0.7rem;
+            }
+            .loginBtn,
+            .registernewaccBtn {
+              width: 45%;
+              height: 2rem;
+              border-radius: 5rem;
+              border: none;
+              background-color: #577eda;
+              color: white;
+              font-size: 0.9rem;
+              font-weight: 550;
+              font-family: "Nunito", sans-serif;
+              transition: all 0.2s ease-in-out;
+              border: 2px solid #577eda;
+              &:hover {
+                background-color: white;
+                color: #577eda;
+              }
+            }
+            .registernewaccBtn {
+              background-color: white;
+              border: 2px solid #577eda;
+              color: #577eda;
+              &:hover {
+                background-color: #577eda;
+                color: white;
+              }
+            }
+          }
+        }
+        .icons {
+          width: 100%;
+          height: 3rem;
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
+        }
+        margin-bottom: 6rem;
+        padding-bottom: 2rem;
+      }
+      .OtherInfo {
+        width: 45%;
+        height: 70%;
+        display: flex;
+        align-items: flex-start;
+        margin-left: 0.5rem;
+        img {
+          width: 60%;
+          height: 42%;
+          object-fit: cover;
+          border-radius: 0.5rem;
+        }
+        .lowerSpace {
+        }
+      }
+    }
+  }
+}
+.fireErrors {
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: red;
+  padding-left: 1.7rem;
+  padding-right: 1.7rem;
+  padding-top: 1rem;
+}
+@media only screen and (max-width: 760px) {
+  .converstionComp__Wrapper {
+    width: 100%;
+    height: calc(100vh - 4rem);
+    margin-left: 0;
+    background-color: $primary_bgColor;
+    .inner__Wrapper {
+      overflow-y: hidden;
+      width: 100%;
+      height: 100%;
+      background-color: #0847d5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .leftSide {
+        overflow-y: hidden;
+        width: 100%;
+        height: 100%;
+        background: $primary_bgColor;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .brandIcon {
+        }
+        .authBox {
+          background-color: white;
+          padding-top: 1.5rem;
+          width: 100vw !important;
+          height: 100% !important;
+          border-radius: 1rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-evenly;
+          .userInfo {
+            width: 100% !important;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            form {
+              width: 100%;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: space-evenly;
+              .usernameData,
+              .emailData,
+              .passwordData {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              }
+              input {
+                font-family: "Nunito", sans-serif;
+                width: 85%;
+                height: 2rem;
+                font-size: 0.7rem;
+                border: 0;
+                color: $dull_textColor;
+                border-bottom: 2px inset #577eda;
+                margin-left: 0.3rem;
+                padding: 0.3rem;
+                background-color: white;
+              }
+              .loginBtn {
+                margin-bottom: -0.5rem;
+              }
+              .loginBtn,
+              .registernewaccBtn {
+                width: 35%;
+                height: 1.4rem;
+                border-radius: 5rem;
+                border: none;
+                background-color: #577eda;
+                color: white;
+                font-size: 0.7rem;
+                font-weight: 400;
+                font-family: "Nunito", sans-serif;
+                transition: all 0.2s ease-in-out;
+                border: 2px solid #577eda;
+                &:hover {
+                  background-color: white;
+                  color: #577eda;
+                }
+              }
+              .registernewaccBtn {
+                background-color: white;
+                border: 2px solid #577eda;
+                color: #577eda;
+                &:hover {
+                  background-color: #577eda;
+                  color: white;
+                }
+              }
+            }
+          }
+          .icons {
+            width: 100%;
+            height: 3rem;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+          }
+          margin-bottom: 6rem;
+          padding-bottom: 2rem;
+        }
+        .OtherInfo {
+          width: 45%;
+          height: 70%;
+          display: flex;
+          align-items: flex-start;
+          margin-left: 0.5rem;
+          img {
+            width: 60%;
+            height: 42%;
+            object-fit: cover;
+            border-radius: 0.5rem;
+          }
+          .lowerSpace {
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 360px) {
+  .converstionComp__Wrapper {
+    width: 100%;
+    height: calc(100vh - 4rem);
+    margin-left: 0;
+    background-color: $primary_bgColor;
+    .inner__Wrapper {
+      overflow-y: hidden;
+      width: 100%;
+      height: 100%;
+      background-color: #0847d5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .leftSide {
+        overflow-y: hidden;
+        width: 100%;
+        height: 100%;
+        background: $primary_bgColor;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .brandIcon {
+        }
+        .authBox {
+          background-color: white;
+          padding-top: 1.5rem;
+          width: 14rem;
+          height: 22rem;
+          border-radius: 1rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-evenly;
+          .userInfo {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            form {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: space-evenly;
+              .usernameData,
+              .emailData,
+              .passwordData {
+                display: flex;
+                align-items: center;
+              }
+              input {
+                font-family: "Nunito", sans-serif;
+                width: 10rem;
+                height: 2rem;
+                font-size: 0.7rem;
+                border: 0;
+                color: $dull_textColor;
+                border-bottom: 2px inset #577eda;
+                color: $dull_textColor;
+                margin-left: 0.3rem;
+                padding: 0.3rem;
+                background-color: white;
+              }
+              .loginBtn {
+                margin-bottom: -0.5rem;
+              }
+              .loginBtn,
+              .registernewaccBtn {
+                width: 35%;
+                height: 1.4rem;
+                border-radius: 5rem;
+                border: none;
+                background-color: #577eda;
+                color: white;
+                font-size: 0.7rem;
+                font-weight: 400;
+                font-family: "Nunito", sans-serif;
+                transition: all 0.2s ease-in-out;
+                border: 2px solid #577eda;
+                &:hover {
+                  background-color: white;
+                  color: #577eda;
+                }
+              }
+              .registernewaccBtn {
+                background-color: white;
+                border: 2px solid #577eda;
+                color: #577eda;
+                &:hover {
+                  background-color: #577eda;
+                  color: white;
+                }
+              }
+            }
+          }
+          .icons {
+            width: 100%;
+            height: 3rem;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+          }
+          margin-bottom: 6rem;
+          padding-bottom: 2rem;
+        }
+        .OtherInfo {
+          width: 45%;
+          height: 70%;
+          display: flex;
+          align-items: flex-start;
+          margin-left: 0.5rem;
+          img {
+            width: 60%;
+            height: 42%;
+            object-fit: cover;
+            border-radius: 0.5rem;
+          }
+          .lowerSpace {
+          }
+        }
+      }
+    }
+  }
+}

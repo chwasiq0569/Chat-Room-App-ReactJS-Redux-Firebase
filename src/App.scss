@@ -1,0 +1,16 @@
+$primary_bgColor: #f8f8f8;
+$secondary_iconsColor: #9fa7a7;
+$dull_textColor: #464949;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.App {
+  overflow: hidden;
+}
+.flexingNav {
+  display: flex;
+  background-color: $primary_bgColor;
+}

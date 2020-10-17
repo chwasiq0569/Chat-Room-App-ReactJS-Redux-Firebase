@@ -1,0 +1,405 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+// font-family: 'Nunito', sans-serif;
+// font-family: 'Open Sans', sans-serif;
+// font-family: 'Poppins', sans-serif;
+// font-family: 'Roboto', sans-serif;
+// font-family: 'Montserrat', sans-serif;
+
+$primary_bgColor: #f8f8f8;
+$secondary_iconsColor: #9fa7a7;
+$dull_textColor: #464949;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.timeline__Wrapper {
+  width: 100%;
+  background-color: $primary_bgColor;
+  .inner__Wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: $primary_bgColor;
+    .posting__Section {
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      height: 7rem;
+      border: 2px solid #eeeeee;
+      .upperPortion {
+        background-color: white;
+        padding: 0.5rem;
+        width: 100%;
+        height: 3.5rem;
+        display: flex;
+        align-items: center;
+        border-radius: 0.5rem;
+        border: 2px solid #eeeeee;
+        .leftSide {
+          width: 100%;
+          height: auto;
+          display: flex;
+          align-items: center;
+          padding: 0.3rem;
+          .userProfile__Pic {
+            width: 2rem;
+            height: 2rem;
+            img {
+              border-radius: 50%;
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+          .posting__Text {
+            width: 100%;
+            height: auto;
+            display: flex;
+            align-items: center;
+            margin-left: 0.3rem;
+            margin-top: 0.3rem;
+            textarea {
+              width: 100%;
+              height: auto;
+              outline: none;
+              border: none;
+              overflow-wrap: break-word;
+              font-size: 0.85rem;
+              font-family: "Nunito", sans-serif;
+              position: relative;
+              white-space: pre-wrap;
+              resize: none; /* user can resize vertically, but width is fixed */
+              padding: 0.3rem;
+              background-color: white;
+              border-radius: 0.5rem;
+            }
+            textarea::-webkit-scrollbar {
+              width: 12px;
+              background-color: white;
+            }
+            textarea::-webkit-scrollbar-thumb {
+              border-radius: 10px;
+              -webkit-box-shadow: inset 0 0 6px #e3e9e9;
+              background-color: #e3e9e9;
+            }
+          }
+        }
+        .rightSide {
+          width: 20%;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          .uploadIcon,
+          .emojisIcon {
+            cursor: pointer;
+            margin-right: 0.7rem;
+            label {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      .lowerPortion {
+        width: 100%;
+        height: 1.7rem;
+        margin: 0;
+        padding: 0;
+        margin-top: 0.7rem;
+        button {
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          height: 100%;
+          border-radius: 5px;
+          border: none;
+          font-family: "Poppins", sans-serif;
+          background-color: #577eda;
+          color: white;
+          letter-spacing: 0.7px;
+          font-size: 0.8rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease-in-out;
+          &:disabled {
+            background-color: $secondary_iconsColor;
+          }
+          &:hover:enabled {
+            border: 2px solid #577eda;
+            background-color: transparent;
+            color: #577eda;
+          }
+        }
+        .progressBar {
+          width: 100%;
+          height: 1rem;
+          margin-top: 0.5rem;
+        }
+      }
+    }
+  }
+  .postsCollection {
+    z-index: 3;
+    padding: 1rem;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border: 2px solid #eeeeee;
+    align-items: center;
+    border-radius: 0.5rem;
+    // font-family: "Roboto", sans-serif;
+    margin-bottom: 1rem;
+    .post__userProfile,
+    .post__Comments {
+      padding-top: 0.3rem;
+      padding-bottom: 0.7rem;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      border-bottom: 2px solid #eeeeee;
+      .profilePic {
+        width: 2.2rem;
+        height: 2.2rem;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 50%;
+        }
+      }
+      .userName {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        p {
+          padding: 0.3rem;
+          font-family: "Open Sans", sans-serif;
+          font-weight: 600;
+          font-size: 0.9rem;
+        }
+      }
+      .individualComment {
+        width: 80%;
+        p {
+          font-family: "Open Sans", sans-serif;
+          // font-family: "Montserrat", sans-serif;
+          font-size: 0.7rem;
+          width: 95%;
+        }
+      }
+    }
+    .post__userProfile {
+      display: flex;
+      justify-content: space-between;
+      .innerLeft {
+        padding-top: 0.3rem;
+        padding-bottom: 0.7rem;
+        display: flex;
+        align-items: center;
+        width: 100%;
+      }
+      .innerRight {
+        cursor: pointer;
+      }
+    }
+    .post__Comments {
+      margin-top: 1rem;
+      display: flex;
+      align-items: flex-start;
+      .profilePic {
+        width: 1.7rem;
+        height: 1.7rem;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 50%;
+        }
+      }
+      .userName {
+        width: auto;
+        margin-left: 0.3rem;
+        margin-top: 0.1rem;
+        display: flex;
+        align-items: flex-start;
+        p {
+          width: 100%;
+          align-self: flex-start;
+          padding: 0px;
+          font-size: 0.65rem;
+        }
+      }
+      .individualComment {
+        margin-left: 0.3rem;
+        margin-top: 0.2rem;
+        p {
+          font-size: 0.6rem;
+        }
+      }
+    }
+    .post__Caption {
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+      width: 100%;
+      font-family: "Nunito", sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: black;
+    }
+    .postContent {
+      margin-top: 0.3rem;
+      width: 100%;
+      height: auto;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .Reaction__Section {
+      width: 100%;
+      padding-top: 1.5rem;
+      height: 2.5rem;
+      display: flex;
+      align-items: center;
+      .LikesSection,
+      .commentsSection {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        .likesCount,
+        .commentsCount {
+          margin-left: 0.5rem;
+          margin-bottom: 0.3rem;
+          span {
+            font-size: 0.8rem;
+            font-family: "Open Sans", sans-serif;
+            color: $secondary_iconsColor;
+          }
+        }
+      }
+      .commentsSection {
+        margin-left: 1rem;
+      }
+    }
+    .commentWritingSection {
+      width: 100%;
+      height: auto;
+      display: flex;
+      align-items: center;
+      margin-left: 0.3rem;
+      margin-top: 0.7rem;
+      justify-content: space-between;
+      textarea {
+        width: 100%;
+        height: auto;
+        outline: none;
+        border: none;
+        overflow-wrap: break-word;
+        font-size: 0.85rem;
+        font-family: "Nunito", sans-serif;
+        position: relative;
+        white-space: pre-wrap;
+        resize: none; /* user can resize vertically, but width is fixed */
+        padding: 0.3rem;
+        background-color: white;
+        border-radius: 0.5rem;
+      }
+      textarea::-webkit-scrollbar {
+        width: 12px;
+        background-color: white;
+      }
+      textarea::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px #e3e9e9;
+        background-color: #e3e9e9;
+      }
+      button {
+        color: #577eda;
+        background-color: transparent;
+        border: none;
+        font-size: 0.85rem;
+        margin-left: 0.5rem;
+        cursor: pointer;
+        &:disabled {
+          cursor: not-allowed;
+          color: $secondary_iconsColor;
+        }
+      }
+    }
+    .viewMoreComments__Section {
+      width: 100%;
+      margin-top: 0.5rem;
+      p {
+        font-size: 0.65rem;
+        opacity: 0.7;
+        font-weight: 500;
+        font-family: "Open Sans", sans-serif;
+        &:hover {
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 445px) {
+  .timeline__Wrapper {
+    .inner__Wrapper {
+      .posting__Section {
+        width: 95%;
+        .leftSide {
+          .posting__Text {
+            width: 75%;
+            textarea {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 388px) {
+  .timeline__Wrapper {
+    .inner__Wrapper {
+      .posting__Section {
+        width: 95%;
+        .leftSide {
+          .posting__Text {
+            width: 70%;
+            textarea {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 317px) {
+  .timeline__Wrapper {
+    .inner__Wrapper {
+      .posting__Section {
+        width: 95%;
+        .leftSide {
+          .posting__Text {
+            width: 60%;
+            textarea {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

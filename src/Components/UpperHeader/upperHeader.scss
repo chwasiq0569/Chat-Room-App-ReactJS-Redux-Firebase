@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+$primary_bgColor: #f8f8f8;
+$secondary_iconsColor: #e3e9e9;
+$dull_textColor: #464949;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.UpperHeader__Wrapper {
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4rem;
+  background-color: $primary_bgColor;
+  display: flex;
+  .inner__Wrapper {
+    padding: 1rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .leftSide,
+    .rightSide {
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+    .leftSide {
+      justify-content: flex-start;
+      display: flex;
+      .brandLogo__Container {
+      }
+
+      .searchbar__Container {
+        flex: 1;
+        margin-left: 1.3rem;
+        width: 100%;
+        .searchBox {
+          padding: 0.7rem;
+          border: none;
+          background-color: $secondary_iconsColor;
+          font-family: "Roboto", sans-serif;
+          color: $dull_textColor;
+          width: 100%;
+          height: 1.8rem;
+          border-radius: 2rem;
+          font-size: 0.9rem;
+        }
+      }
+    }
+    .rightSide {
+      align-items: center;
+      justify-content: flex-end;
+      .notification__icon {
+        margin-left: 0.7rem;
+        cursor: pointer;
+      }
+      .message {
+        cursor: pointer;
+      }
+      .User__Profile {
+        cursor: pointer;
+
+        margin-left: 1rem;
+        background-color: $primary_bgColor;
+        border-radius: 50%;
+        img {
+          border-radius: 100%;
+          width: 2.5rem;
+          height: 2.5rem;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 352px) {
+  .UpperHeader__Wrapper {
+    .inner__Wrapper {
+      .leftSide {
+        display: flex;
+        .searchbar__Container {
+          display: none;
+        }
+      }
+      .rightSide {
+        .notification__icon {
+          margin-right: 1.2rem;
+        }
+      }
+    }
+  }
+}
