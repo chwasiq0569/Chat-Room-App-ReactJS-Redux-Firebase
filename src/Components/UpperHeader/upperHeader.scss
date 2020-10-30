@@ -17,6 +17,9 @@ $dull_textColor: #464949;
   margin-right: 2rem;
   text-decoration: underline;
   color: #858888;
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
 }
 .UpperHeader__Wrapper {
   position: fixed;
@@ -75,7 +78,6 @@ $dull_textColor: #464949;
       }
       .User__Profile {
         cursor: pointer;
-
         margin-left: 1rem;
         background-color: $primary_bgColor;
         border-radius: 50%;
