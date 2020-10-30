@@ -13,8 +13,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { motion } from "framer-motion";
 toast.configure();
-
-const Timeline = (props) => {
+const Timeline = React.memo((props) => {
   const [image, setImage] = useState(null);
   const [progress, setProgress] = useState(0);
   const [error, setError] = useState("");
@@ -161,7 +160,7 @@ const Timeline = (props) => {
       </div>
     </div>
   );
-};
+});
 
 const mapStateToProps = (state) => {
   return {

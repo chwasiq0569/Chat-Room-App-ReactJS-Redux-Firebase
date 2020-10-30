@@ -11,7 +11,7 @@ import Tagged from "./Tagged/Tagged";
 import Notifications from "./Notifications/Notifications";
 import { motion } from "framer-motion";
 
-const MainContainerComp = ({
+const MainContainerComp = React.memo(({
   condition,
   renderStories,
   upload,
@@ -63,7 +63,7 @@ const MainContainerComp = ({
       </div>
     </div>
   );
-};
+});
 const mapStateToProps = (state) => {
   return {
     user: state.user,

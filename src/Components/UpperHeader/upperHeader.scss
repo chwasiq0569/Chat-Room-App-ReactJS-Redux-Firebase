@@ -10,6 +10,14 @@ $dull_textColor: #464949;
   padding: 0;
   box-sizing: border-box;
 }
+.github_Repo {
+  font-family: "Roboto", sans-serif;
+  font-size: 0.7rem;
+  cursor: pointer;
+  margin-right: 2rem;
+  text-decoration: underline;
+  color: #858888;
+}
 .UpperHeader__Wrapper {
   position: fixed;
   z-index: 5;

@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 import { BsHash } from "react-icons/bs";
 import { withRouter } from "react-router-dom";
 
-const LeftSideBar = (props) => {
+const LeftSideBar = React.memo((props) => {
   const { condition,renderStories,upload,handleUpload,image,history } = props;
 
   const [hoveredStatus4, setHoveredStatus4] = useState(false);
@@ -102,6 +102,6 @@ const LeftSideBar = (props) => {
       </div>
     </motion.div>
   );
-};
+});
 
 export default withRouter(LeftSideBar);

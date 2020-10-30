@@ -66,6 +66,7 @@ const UpperHeader = (props) => {
           </div>
         </div>
         <div className="rightSide">
+          <p className="github_Repo" onClick={() => window.open("https://github.com/chwasiq0569/Chat-Room-App-ReactJS-Redux-Firebase.git", "_blank")}>Click For Github Repo</p>
           <div className="messages">
             <Link
               to="/conversations"
