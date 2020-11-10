@@ -16,7 +16,7 @@ const Favourites = (props) => {
       .firestore()
       .collection("favouritePosts")
       .onSnapshot((snapshot) =>
-        setPosts(snapshot.docs.map((doc) => ({ id: doc.id, post: doc.data() })))
+        setPosts(snapshot.docs.map(( doc ) => ({ id: doc.id, post: doc.data() })))
       );
     return () => {
       unsubscribe();

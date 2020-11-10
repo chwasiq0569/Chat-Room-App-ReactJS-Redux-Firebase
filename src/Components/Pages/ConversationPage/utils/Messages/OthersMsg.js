@@ -8,11 +8,6 @@ const OthersMsg = ({ msg }) => {
       </div>
       <div className="message">
         <p>
-          {/* Hello How are You Bro?Hello How are You Bro?Hello How are You
-          Bro?Hello How are You Bro?Hello How are You Bro?Hello How are You
-          Bro?Hello How are You Bro?Hello How are You Bro?Hello How are You
-          Bro?Hello How are You Bro?Hello How are You Bro?Hello How are You
-          Bro?Hello How are You Bro?Hello How are You Bro? */}
           {msg.username}: {msg.message}
         </p>
       </div>

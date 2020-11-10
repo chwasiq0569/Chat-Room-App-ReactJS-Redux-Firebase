@@ -11,13 +11,7 @@ const MyMsg = ({ msg }) => {
       transition={{ duration: 0.2, ease: "easeOut" }}
     >
       <div className="message">
-        <p>
-          {msg.message}
-          {/* I am good what up?I am good what up?I am good what up?I am good what
-          up?I am good what up?I am good what up?I am good what up?I am good
-          what up?I am good what up?I am good what up?I am good what up?I am
-          good what up?I am good what up? */}
-        </p>
+        <p>{msg.message}</p>
       </div>
       <div className="myImage">
         <img src={MyImage} alt="myProfilePic" />
