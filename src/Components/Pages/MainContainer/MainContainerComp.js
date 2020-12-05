@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import LeftSideBar from "./../../LeftSideBar/LeftSideBar";
 import "./mainContainer.scss";
 import AdsSection from "./AdsSection/AdsSection";

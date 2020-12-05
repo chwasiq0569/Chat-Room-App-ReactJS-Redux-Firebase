@@ -1,27 +1,29 @@
 import React, { useState, useEffect } from "react";
 import "../Timeline/timeLine.scss";
 import fire from "../../../Firebase/Firebase";
-import { connect } from "react-redux";
-import ProfilePlaceholderImg from "../../../../Images/download.jpg";
 import "./favourites.scss";
 import { motion } from "framer-motion";
+import UserProfileSection from "../Timeline/Post/UserProfileSection";
 
-const Favourites = (props) => {
+const Favourites = () => {
+  //contain favourties Posts
   const [posts, setPosts] = useState([]);
-  console.log("Favourites");
-
-  useEffect(() => {
-    let unsubscribe = fire
+  const getPostsFromBackend = () => {
+    return fire
       .firestore()
       .collection("favouritePosts")
       .onSnapshot((snapshot) =>
         setPosts(snapshot.docs.map((doc) => ({ id: doc.id, post: doc.data() })))
       );
+  };
+
+  useEffect(() => {
+    //getting favourite Posts from backend
+    let unsubscribe = getPostsFromBackend();
     return () => {
       unsubscribe();
     };
   }, []);
-  console.log(posts[0]?.post?.post.imageUrl);
 
   return (
     <motion.div
@@ -33,16 +35,11 @@ const Favourites = (props) => {
       <h1>Favourites</h1>
       {posts.map((post) => (
         <div className="postsCollection" key={post.id}>
-          <div className="post__userProfile">
-            <div className="innerLeft">
-              <div className="profilePic">
-                <img src={ProfilePlaceholderImg} alt="user_Profile_Pic" />
-              </div>
-              <div className="userName">
-                <p>{post?.post?.post?.username}</p>
-              </div>
-            </div>
-          </div>
+          <UserProfileSection
+            post={post?.post?.post}
+            upload={() => "hello"}
+            favourites={true}
+          />
           <div className="post__Caption">{post?.post?.post?.caption}</div>
           <div className="postContent">
             <img src={post?.post?.post?.imageUrl} alt="user_Post_Image" />
@@ -52,9 +49,5 @@ const Favourites = (props) => {
     </motion.div>
   );
 };
-const mapStateToProps = (state) => {
-  return {
-    user: state.user,
-  };
-};
-export default connect(mapStateToProps)(Favourites);
+
+export default Favourites;

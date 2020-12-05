@@ -8,7 +8,6 @@ import { motion } from "framer-motion";
 import { notifySuccess } from "../../../../util/util";
 import UserProfileSection from "./UserProfileSection";
 import ReactionSection from "./ReactionSection";
-import Comment from "./Comment";
 import Comments from "./Comments";
 
 const Post = (props) => {
@@ -22,8 +21,9 @@ const Post = (props) => {
   //we will render comments by checking number of comments if comments are more we will hide them on clicking Btn we will be able to see hided Comments (showCommentsStatus) will track all this scnerio
   //liked state will tells us that post is liked or not
   const [liked, setLiked] = useState(false);
-
   //this function will we called when we click on favourite Btn of particular post on which that post will be uploaded to backend as favourite
+
+  //on clicking favourite Btn post will be added to favourites
   const upload = (post, postId, e) => {
     e.preventDefault();
     console.log(postId);
@@ -118,7 +118,11 @@ const Post = (props) => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: 1.5, duration: 0.5, type: "tween" }}
     >
-      <UserProfileSection post={post} upload={(e) => upload(post, postId, e)} />
+      <UserProfileSection
+        post={post}
+        upload={(e) => upload(post, postId, e)}
+        favourites={false}
+      />
       <div className="post__Caption">{post.caption}</div>
       <div className="postContent">
         <img src={post.imageUrl} alt="user_Post_Image" />
