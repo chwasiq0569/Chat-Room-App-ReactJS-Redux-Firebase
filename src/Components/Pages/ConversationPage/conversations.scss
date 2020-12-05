@@ -39,14 +39,15 @@ $dull_textColor: #464949;
         height: 100%;
         overflow-y: scroll;
         .messagesContainer {
+          // border: 5px solid red;
           margin-top: 0.5rem;
-          overflow-x: hidden;
-          height: calc(100vh - 11.5rem);
+          height: auto;
           display: flex;
           flex-direction: column;
           align-items: center;
           margin-bottom: 0.5rem;
           justify-content: flex-end;
+          overflow: hidden;
           .otherMessages {
             margin-left: 0.5rem;
             margin-top: 1rem;

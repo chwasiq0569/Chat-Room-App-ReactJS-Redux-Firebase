@@ -57,7 +57,7 @@ const UpperHeader = (props) => {
       <div className="inner__Wrapper">
         <div className="leftSide">
           <div className="brandLogo__Container">
-            <Link to="/maincomponent/timeline">
+            <Link to="/home/timeline">
               <FiActivity size="1.8rem" />
             </Link>
           </div>
@@ -66,29 +66,46 @@ const UpperHeader = (props) => {
           </div>
         </div>
         <div className="rightSide">
-          <p className="github_Repo" onClick={() => window.open("https://github.com/chwasiq0569/Chat-Room-App-ReactJS-Redux-Firebase.git", "_blank")}>Click For Github Repo</p>
+          <p
+            className="github_Repo"
+            onClick={() =>
+              window.open(
+                "https://github.com/chwasiq0569/Chat-Room-App-ReactJS-Redux-Firebase.git",
+                "_blank"
+              )
+            }
+          >
+            Click For Github Repo
+          </p>
           <div className="messages">
-            <Link
-              to="/conversations"
-            >
-              <FiMessageCircle size="1.4rem" color={props.history.location.pathname === "/conversations" ? "#577eda" : "#9fa7a7"} />
+            <Link to="/conversations">
+              <FiMessageCircle
+                size="1.4rem"
+                color={
+                  props.history.location.pathname === "/conversations"
+                    ? "#577eda"
+                    : "#9fa7a7"
+                }
+              />
             </Link>
           </div>
           <div className="notification__icon">
-            <Link
-              to="/maincomponent/notifications"
-            >
-              <AiOutlineBell size="1.5rem" color={props.history.location.pathname === "/maincomponent/notifications" ? "#577eda" : "#9fa7a7"} />
+            <Link to="/notifications">
+              <AiOutlineBell
+                size="1.5rem"
+                color={
+                  props.history.location.pathname === "/notifications"
+                    ? "#577eda"
+                    : "#9fa7a7"
+                }
+              />
             </Link>
           </div>
           <div className="User__Profile">
             <img src={ProfilePlaceholder} alt="user_Profile_Pic" />
           </div>
-          <div
-            className="notification__icon"
-            onClick={signOut}
-          >
-              <FiLogOut size="1.4rem" color="#577eda" />
+          <div className="notification__icon" onClick={signOut}>
+            <FiLogOut size="1.4rem" color="#577eda" />
           </div>
         </div>
       </div>

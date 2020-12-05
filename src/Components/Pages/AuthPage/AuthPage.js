@@ -29,13 +29,12 @@ const AuthPage = (props) => {
   };
 
   useEffect(() => {
-    console.log("props.user: ", props.user);
     const unsubscribe = fire.auth().onAuthStateChanged((authUser) => {
       if (authUser) {
         setUser(authUser);
         if (user) {
           props.check_User(user);
-          props.history.push("./maincomponent/timeline");
+          props.history.push("/home/timeline");
         }
       } else {
         setUser(authUser);
@@ -70,9 +69,6 @@ const AuthPage = (props) => {
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then((result) => {
-        console.log("New User Created Successfully");
-        console.log("result: ", result.user.uid);
-
         return result.user.updateProfile({
           displayName: username,
         });

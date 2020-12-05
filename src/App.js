@@ -10,6 +10,8 @@ import PopUpStory from "./Components/PopUpComp/PopUpStory";
 import { connect } from "react-redux";
 import { motion } from "framer-motion";
 import { check_User } from "./Redux/Actions/userActions";
+import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+import Notifications from "./Components/Pages/MainContainer/Notifications/Notifications";
 
 const App = (props) => {
   //will track popup is open or closed
@@ -43,9 +45,37 @@ const App = (props) => {
       ) : null}
       {props?.user?.user?.user === null ? null : <UpperHeader />}
       <div className="flexingNav">
-        {/* <LeftSideBar /> */}
-        <Switch>
-          <Route
+        {/* <Switch> */}
+        <PrivateRoute
+          user={props?.user?.user?.user}
+          path="/home"
+          component={() => (
+            <MainContainerComp
+              user={props?.user?.user?.user}
+              condition={condition}
+              renderStories={renderStories}
+            />
+          )}
+        />
+        {/* <Route path="/notifications" component={Notifications} /> */}
+        <PrivateRoute
+          user={props?.user?.user?.user}
+          path="/notifications"
+          component={() => <Notifications user={props?.user?.user?.user} />}
+        />
+        {/* <PrivateRoute
+          user={props?.user?.user?.user}
+          path="/popUpStory"
+          component={() => <PopUpStory user={props?.user?.user?.user} />}
+        /> */}
+        <PrivateRoute
+          user={props?.user?.user?.user}
+          path="/conversations"
+          component={() => <ConversationPage user={props?.user?.user?.user} />}
+        />
+
+        <Route exact path="/" component={AuthPage} />
+        {/* <Route
             path="/maincomponent"
             component={() => (
               <MainContainerComp
@@ -53,11 +83,10 @@ const App = (props) => {
                 renderStories={renderStories}
               />
             )}
-          />
-          <Route path="/popUpStory" component={PopUpStory} />
-          <Route path="/conversations" component={ConversationPage} />
-          <Route exact path="/" component={AuthPage} />
-        </Switch>
+          /> */}
+        {/* <Route path="/popUpStory" component={PopUpStory} /> */}
+        {/* </Switch> */}
+        {/* <Route path="/conversations" component={ConversationPage} /> */}
       </div>
     </motion.div>
   );

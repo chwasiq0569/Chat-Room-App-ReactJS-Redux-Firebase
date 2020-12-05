@@ -43,8 +43,7 @@ const MainContainerComp = (props) => {
   //getting messages from backend
   useEffect(() => {
     let unsubscribe = getMessagesFromBackend();
-    var myDiv = document.getElementById("myDiv");
-    myDiv.scrollTop = myDiv.scrollHeight;
+
     return () => {
       unsubscribe();
     };
@@ -63,7 +62,7 @@ const MainContainerComp = (props) => {
           <div className="upperSection">
             <IndividualUserConvo />
           </div>
-          <div className="lowerSection" id="myDiv">
+          <div className="lowerSection">
             {" "}
             <div className="messagesContainer">
               {/* if username of message and username of current loggedIn User is same then show that message blue colored*/}

@@ -79,11 +79,11 @@ const LeftSideBar = React.memo((props) => {
         <div className="upper__Section">
           <div className="drop__Icon">
             {/* is current route is /maincomponent/timeline then render blue icon otherwise render secondary colored icon */}
-            <Link to="/maincomponent/timeline">
+            <Link to="/home/timeline">
               <BsDroplet
                 size="1.5rem"
                 color={
-                  props.history.location.pathname === "/maincomponent/timeline"
+                  props.history.location.pathname === "/home/timeline"
                     ? "#577eda"
                     : "#9fa7a7"
                 }
@@ -92,12 +92,11 @@ const LeftSideBar = React.memo((props) => {
           </div>
           <div className="Favourites__Icon">
             {/* is current route is /maincomponent/favourites then render blue icon otherwise render secondary colored icon */}
-            <Link to="/maincomponent/favourites">
+            <Link to="/home/favourites">
               <AiOutlineStar
                 size="1.5rem"
                 color={
-                  props.history.location.pathname ===
-                  "/maincomponent/favourites"
+                  props.history.location.pathname === "/home/favourites"
                     ? "#577eda"
                     : "#9fa7a7"
                 }
@@ -106,11 +105,11 @@ const LeftSideBar = React.memo((props) => {
           </div>
           <div className="Like__Icon">
             {/* is current route is /maincomponent/tagged then render blue icon otherwise render secondary colored icon */}
-            <Link to="/maincomponent/tagged">
+            <Link to="/home/tagged">
               <BsHash
                 size="1.7rem"
                 color={
-                  props.history.location.pathname === "/maincomponent/tagged"
+                  props.history.location.pathname === "/home/tagged"
                     ? "#577eda"
                     : "#9fa7a7"
                 }
