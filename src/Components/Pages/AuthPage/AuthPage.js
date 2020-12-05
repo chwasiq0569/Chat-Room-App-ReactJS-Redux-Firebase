@@ -13,8 +13,8 @@ import { FiActivity } from "react-icons/fi";
 
 const AuthPage = (props) => {
   const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("dummyUser@gmail.com");
+  const [password, setPassword] = useState("dummyUser@gmail.com");
   const [register, setRegister] = useState(false);
   const [fireErrors, setFireErrors] = useState("");
   const [user, setUser] = useState(null);
