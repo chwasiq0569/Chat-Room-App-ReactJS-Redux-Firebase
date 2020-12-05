@@ -5,6 +5,7 @@ import fire from "../Firebase/Firebase";
 const PopUpStory = ({ renderStories, condition }) => {
   const [stories, setStories] = useState([]);
 
+  //getting stories from backend
   useEffect(() => {
     const unsubscribe = fire
       .firestore()

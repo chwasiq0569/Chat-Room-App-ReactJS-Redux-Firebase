@@ -3,6 +3,7 @@ import Comment from "./Comment";
 import fire from "../../../../Firebase/Firebase";
 import firebase from "firebase";
 import { useState } from "react";
+import uuid from "react-uuid";
 
 const Comments = ({ comments, postId, username }) => {
   const [commentText, setCommentText] = useState("");
@@ -30,10 +31,10 @@ const Comments = ({ comments, postId, username }) => {
         !showCommentsStatus ? (
           // here we are picking last comment where i is index
           i === comments.length - 1 ? (
-            <Comment comment={comment} />
+            <Comment key={uuid()} comment={comment} />
           ) : null
         ) : (
-          <Comment comment={comment} />
+          <Comment key={uuid()} comment={comment} />
         )
       )}
       {/* if comments are more then one only then show showMoreCommentsBtn  */}
