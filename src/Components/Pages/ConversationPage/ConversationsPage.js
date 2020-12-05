@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import IndividualUserConvo from "./utils/IndividualUserConvo";
-import WriteAndSend from "./utils/rightAndSendComp/WriteAndSend";
+import WriteAndSend from "./utils/WriteAndSendComp/WriteAndSend";
 import OthersMsg from "./utils/Messages/OthersMsg";
 import MyMsg from "./utils/Messages/MyMsg";
 import "./conversations.scss";
@@ -17,6 +17,8 @@ const MainContainerComp = (props) => {
   const onChange = (e) => {
     setMessage(e.target.value);
   };
+
+  ///this function will upload msg to backend
   const sendMessage = (e) => {
     e.preventDefault();
     fire.firestore().collection("messages").add({
@@ -27,8 +29,8 @@ const MainContainerComp = (props) => {
     setMessage("");
   };
 
-  useEffect(() => {
-    fire
+  const getMessagesFromBackend = () => {
+    return fire
       .firestore()
       .collection("messages")
       .orderBy("timestamp", "asc")
@@ -37,8 +39,15 @@ const MainContainerComp = (props) => {
           snapshot.docs.map((doc) => ({ id: doc.id, msg: doc.data() }))
         )
       );
+  };
+  //getting messages from backend
+  useEffect(() => {
+    let unsubscribe = getMessagesFromBackend();
     var myDiv = document.getElementById("myDiv");
     myDiv.scrollTop = myDiv.scrollHeight;
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
   return (
@@ -57,6 +66,7 @@ const MainContainerComp = (props) => {
           <div className="lowerSection" id="myDiv">
             {" "}
             <div className="messagesContainer">
+              {/* if username of message and username of current loggedIn User is same then show that message blue colored*/}
               {messages.map((msg) =>
                 msg?.msg.username === props.user?.user?.displayName ? (
                   <MyMsg msg={msg?.msg} key={msg?.id} />

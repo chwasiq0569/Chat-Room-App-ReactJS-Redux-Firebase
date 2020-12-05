@@ -16,6 +16,7 @@ const WriteAndSend = ({ onChange, sendMessage, message }) => {
       </div>
       <div className="rightSide">
         <div>
+          {/* if message is not types then diable send Btn and enable when msg is written */}
           <button
             style={{ backgroundColor: "white", border: "none" }}
             onClick={sendMessage}
