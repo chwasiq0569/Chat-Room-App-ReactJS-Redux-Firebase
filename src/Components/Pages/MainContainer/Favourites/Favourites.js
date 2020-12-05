@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "../Timeline/timeLine.scss";
 import fire from "../../../Firebase/Firebase";
 import { connect } from "react-redux";
-import IndividualPost from "./../Timeline/utils/IndividualPost";
 import ProfilePlaceholderImg from "../../../../Images/download.jpg";
 import "./favourites.scss";
 import { motion } from "framer-motion";
@@ -16,7 +15,7 @@ const Favourites = (props) => {
       .firestore()
       .collection("favouritePosts")
       .onSnapshot((snapshot) =>
-        setPosts(snapshot.docs.map(( doc ) => ({ id: doc.id, post: doc.data() })))
+        setPosts(snapshot.docs.map((doc) => ({ id: doc.id, post: doc.data() })))
       );
     return () => {
       unsubscribe();

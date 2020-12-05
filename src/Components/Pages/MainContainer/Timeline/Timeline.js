@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./timeLine.scss";
-import IndividualPost from "./utils/IndividualPost";
+import Post from "./Post/Post";
 import fire from "../../../Firebase/Firebase";
 import { connect } from "react-redux";
 import firebase from "firebase";
@@ -99,7 +99,7 @@ const Timeline = React.memo((props) => {
           setImage={setImage}
         />
         {posts?.map((post) => (
-          <IndividualPost
+          <Post
             key={post.id}
             postId={post.id}
             post={post.post}
