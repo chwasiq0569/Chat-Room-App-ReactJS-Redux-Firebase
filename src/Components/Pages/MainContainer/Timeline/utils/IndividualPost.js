@@ -9,19 +9,24 @@ import { BsFillHeartFill } from "react-icons/bs";
 import { AiOutlineStar } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
 import { connect } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { motion } from "framer-motion";
+import { notifySuccess } from "./../../../../util/util";
 
-toast.configure();
 const IndividualPost = (props) => {
+  //post prop contain individual post and postId contains id of individualpost and username contains username of loggedIn User
   const { post, postId, username } = props;
+  //comments [] state will store all the comments
   const [comments, setComments] = useState([]);
+  //commentText state contains comment input
   const [commentText, setCommentText] = useState("");
+  //postsArr state contains list of posts
   const [postsArr, setPostArr] = useState([]);
+  //we will render comments by checking number of comments if comments are more we will hide them on clicking Btn we will be able to see hided Comments (showCommentsStatus) will track all this scnerio
   const [showCommentsStatus, setShowCommentsStats] = useState(false);
+  //liked state will tells us that post is liked or not
   const [liked, setLiked] = useState(false);
 
+  //this function will we called when we click on favourite Btn of particular post on which that post will be uploaded to backend as favourite
   const upload = (post, postId, e) => {
     e.preventDefault();
     console.log(postId);
@@ -33,18 +38,11 @@ const IndividualPost = (props) => {
         post: post,
       });
     }
-    toast("Post added To Saved!", {
-      position: "bottom-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    notifySuccess("Post Added to Favourites!");
   };
-  useEffect(() => {
-    let unsubscribe = fire
+
+  const getDataFromBackend = () => {
+    return fire
       .firestore()
       .collection("posts")
       .onSnapshot((snapshot) =>
@@ -52,14 +50,22 @@ const IndividualPost = (props) => {
           snapshot.docs.map((doc) => ({ id: doc.id, post: doc.data() }))
         )
       );
+  };
+
+  useEffect(() => {
+    //getting all the posts from backend
+    let unsubscribe = getDataFromBackend();
     return () => {
+      //cancelling subscription on Unmount
       unsubscribe();
     };
   }, []);
 
+  //return the post whose id is equals to id of individual Post
   let requiredPost = postsArr.filter((posts) => posts.id === postId);
 
   const addComment = (e) => {
+    //this function will upload comments to backend
     e.preventDefault();
     fire
       .firestore()
@@ -81,9 +87,11 @@ const IndividualPost = (props) => {
         .collection("posts")
         .doc(postId)
         .update({
+          //if post is not liked then on cliking like Btn we will update like status to true and will increment number of likes
           liked: true,
           likes: requiredPost[0]?.post?.likes + 1,
         });
+      //if not liked on clicking Like Btn post will be disliked
       setLiked(true);
     } else if (liked) {
       fire
@@ -91,14 +99,17 @@ const IndividualPost = (props) => {
         .collection("posts")
         .doc(postId)
         .update({
+          //if post is likedt hen on cliking like Btn we will update like status to false and will decrement number of likes
           liked: false,
           likes: requiredPost[0]?.post?.likes - 1,
         });
+      //if liked on clicking Like Btn post will be disliked
       setLiked(false);
     }
   };
 
   useEffect(() => {
+    //getting comments from backend
     let unsubscribe;
     if (postId) {
       unsubscribe = fire

@@ -7,6 +7,7 @@ export const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case CHECK_USER:
       return {
+        ...state,
         user: action.payload,
       };
     default:

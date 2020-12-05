@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./authpage.scss";
-import { FiInstagram } from "react-icons/fi";
-import { FiTwitter } from "react-icons/fi";
-import { FiActivity } from "react-icons/fi";
-import { GrFacebook } from "react-icons/gr";
 import { AiOutlineUser } from "react-icons/ai";
 import { AiOutlineMail } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
@@ -11,6 +7,9 @@ import fire from "../../Firebase/Firebase";
 import { check_User } from "./../../../Redux/Actions/userActions";
 import { connect } from "react-redux";
 import { motion } from "framer-motion";
+import Input from "./../../util/Input";
+import Icons from "./Icons";
+import { FiActivity } from "react-icons/fi";
 
 const AuthPage = (props) => {
   const [username, setUsername] = useState("");
@@ -101,36 +100,62 @@ const AuthPage = (props) => {
               <form>
                 <div className="usernameData">
                   <AiOutlineUser color="#577eda" size="1.2rem" />
-                  <input
+                  {register ? (
+                    <Input
+                      className="usernameInput"
+                      name="username"
+                      type="text"
+                      placeholder="Enter Username"
+                      func={(e) => setUsername(e.target.value)}
+                      value={username}
+                    />
+                  ) : null}
+                  {/* <input
                     className={register ? "usernameInput" : "hide"}
                     name="username"
                     type="text"
                     placeholder="Enter Username"
                     onChange={(e) => setUsername(e.target.value)}
                     value={username}
-                  />
+                  /> */}
                 </div>
                 <div className="emailData">
                   <AiOutlineMail color="#577eda" size="1.2rem" />
-                  <input
+                  <Input
+                    className="usernameInput"
+                    name="email"
+                    type="email"
+                    placeholder="Enter Email Address"
+                    func={(e) => setEmail(e.target.value)}
+                    value={email}
+                  />
+                  {/* <input
                     className="usernameInput"
                     name="email"
                     type="email"
                     placeholder="Enter Email Address"
                     onChange={(e) => setEmail(e.target.value)}
                     value={email}
-                  />
+                  /> */}
                 </div>
                 <div className="passwordData">
                   <RiLockPasswordLine color="#577eda" size="1.2rem" />
-                  <input
+                  <Input
+                    className="usernameInput"
+                    name="password"
+                    type="password"
+                    placeholder="Enter Password"
+                    func={(e) => setPassword(e.target.value)}
+                    value={password}
+                  />
+                  {/* <input
                     className="usernameInput"
                     name="password"
                     type="password"
                     placeholder="Enter Password"
                     onChange={(e) => setPassword(e.target.value)}
                     value={password}
-                  />
+                  /> */}
                 </div>
                 <button
                   onClick={register ? signUp : signIn}
@@ -143,12 +168,7 @@ const AuthPage = (props) => {
                 </button>
               </form>
             </div>
-            <div className="icons">
-              <FiInstagram color="#577eda" />
-              <GrFacebook color="#577eda" />
-              <FiActivity color="#577eda" />
-              <FiTwitter color="#577eda" />
-            </div>
+            <Icons />
           </motion.div>
         </div>
       </div>

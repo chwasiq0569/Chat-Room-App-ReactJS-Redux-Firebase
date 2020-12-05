@@ -1,29 +1,31 @@
 import React, { useState, useEffect } from "react";
-import ProfilePlaceholder from "../../../../Images/download.jpg";
-import { GrEmoji } from "react-icons/gr";
 import "./timeLine.scss";
-import { TiAttachment } from "react-icons/ti";
 import IndividualPost from "./utils/IndividualPost";
 import fire from "../../../Firebase/Firebase";
 import { connect } from "react-redux";
-import { check_User } from "./../../../../Redux/Actions/userActions";
 import firebase from "firebase";
 import PopUpStory from "../../../PopUpComp/PopUpStory";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { motion } from "framer-motion";
-toast.configure();
+import AddPosts from "./AddPosts";
+import { notifyWarn, notifySuccess } from "../../../util/util";
+
 const Timeline = React.memo((props) => {
+  //image state will store image to be uploaded
   const [image, setImage] = useState(null);
+  //progress state will keep track of how much file is uploaded in percentage
   const [progress, setProgress] = useState(0);
+  //error state will store error if any error occured during upload
   const [error, setError] = useState("");
+  //url state will store url of image that is uplaod on firebase storage we need thisurl to show images on Timeline
   const [url, setUrl] = useState("");
+  //caption state will store caption of post
   const [caption, setCaption] = useState("");
+  //posts state is an array that will store all the posts
   const [posts, setPosts] = useState([]);
-  const [comment, setComment] = useState("");
+  //showProgress state will tell us wether to show progress bar or not if showProgress is false we will hide progress bar
   const [showProgress, setShowProgress] = useState(false);
 
   useEffect(() => {
+    //this code is getting data from backend firebase in descending order by timestamps
     let unsubscribe = fire
       .firestore()
       .collection("posts")
@@ -34,44 +36,30 @@ const Timeline = React.memo((props) => {
     return () => {
       unsubscribe();
     };
-  }, [props.user]);
+  }, []);
 
-  const handleUpload = (e) => {
-    e.preventDefault();
-    if (e.target.files[0]) {
-      setImage(e.target.files[0]);
-    }
-    console.log(image);
-  };
-
+  //on clicking post button this function will be called
   const upload = (e) => {
     e.preventDefault();
     setShowProgress(true);
+    //accessing firebase storage
     const storage = fire.storage();
     const uploadTask = storage.ref(`postimages/${image.name}`).put(image);
     uploadTask.on(
       "state_changed",
       function (snapshot) {
+        //setting progress
         let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log("Upload is " + progress + "% done");
         setProgress(Math.floor(progress));
       },
       function (error) {
-        console.log(error.message);
         setError(error);
-        toast.warn("Some Error Occured!", {
-          position: "bottom-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+        notifyWarn("Some Error Occured!");
       },
       function () {
         uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
           console.log("File available at", url);
+          //our post Url (image Url that us uploaded)
           setUrl(url);
           //saving post Data inside database
           fire.firestore().collection("posts").add({
@@ -83,71 +71,33 @@ const Timeline = React.memo((props) => {
             favourite: false,
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
           });
+          //after uploading setting Progress state to 0
           setProgress(0);
+          //after uploading setting Caption state to ""
           setCaption("");
+          //after uploading setting Caption state to ""
           setImage(null);
+          //after uploading setting ShowProgress state to false
+          //after uploading we want our progress bar to hide
           setShowProgress(false);
         });
-        toast("Post Uploaded Successfully!", {
-          position: "bottom-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+        notifySuccess("Post Uploaded Successfully!");
       }
     );
-    console.log(image?.name);
   };
 
   return (
     <div className="timeline__Wrapper">
       <div className="inner__Wrapper">
         {/*Add posting section ends */}
-        <motion.div
-          className="posting__Section"
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 1, duration: 0.5 }}
-        >
-          <div className="upperPortion">
-            <div className="leftSide">
-              <div className="userProfile__Pic">
-                <img src={ProfilePlaceholder} alt="user_Profile_Pic" />
-              </div>
-              <div className="posting__Text">
-                <textarea
-                  placeholder="Type Something..."
-                  onChange={(e) => setCaption(e.target.value)}
-                ></textarea>
-              </div>
-            </div>
-            <div className="rightSide">
-              <div className="uploadIcon">
-                <input
-                  type="file"
-                  id="imguploads"
-                  style={{ display: "none" }}
-                  onChange={handleUpload}
-                />
-                <label htmlFor="imguploads">
-                  {"  "}
-                  <TiAttachment color="#9fa7a7" size="1.5rem" />
-                </label>
-              </div>
-            </div>
-          </div>
-          <div className="lowerPortion">
-            <button disabled={!image} onClick={upload}>
-              Post
-            </button>
-            {showProgress ? (
-              <progress value={progress} max="100" className="progressBar" />
-            ) : null}
-          </div>
-        </motion.div>
+        <AddPosts
+          setCaption={setCaption}
+          progress={progress}
+          image={image}
+          upload={upload}
+          showProgress={showProgress}
+          setImage={setImage}
+        />
         {posts?.map((post) => (
           <IndividualPost
             key={post.id}
@@ -167,10 +117,5 @@ const mapStateToProps = (state) => {
     user: state.user,
   };
 };
-const mapDispatchToProps = (dispatch) => {
-  return {
-    check_User: (user) => dispatch(check_User(user)),
-  };
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Timeline);
+export default connect(mapStateToProps)(Timeline);
