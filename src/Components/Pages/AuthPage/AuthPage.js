@@ -51,31 +51,52 @@ const AuthPage = (props) => {
 
   const signIn = (e) => {
     e.preventDefault();
-    fire
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then((result) => {
-        console.log("result: ", result.user.uid);
-        console.log("Successfully Logged In");
+    fetch('api/signin',{
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password
       })
-      .catch((error) => {
-        setFireErrors(error.message);
-      });
+    }).then((res) => res.json()).then((data) => console.log(data))
+    // fire
+    //   .auth()
+    //   .signInWithEmailAndPassword(email, password)
+    //   .then((result) => {
+    //     console.log("result: ", result.user.uid);
+    //     console.log("Successfully Logged In");
+    //   })
+    //   .catch((error) => {
+    //     setFireErrors(error.message);
+    //   });
   };
 
   const signUp = (e) => {
     e.preventDefault();
-    fire
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then((result) => {
-        return result.user.updateProfile({
-          displayName: username,
-        });
+    fetch('api/signup',{
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: username,
+        email: email,
+        password: password
       })
-      .catch(function (error) {
-        setFireErrors(error.message);
-      });
+    }).then((res) => res.json()).then((data) => console.log(data))
+    // fire
+    //   .auth()
+    //   .createUserWithEmailAndPassword(email, password)
+    //   .then((result) => {
+    //     return result.user.updateProfile({
+    //       displayName: username,
+    //     });
+    //   })
+    //   .catch(function (error) {
+    //     setFireErrors(error.message);
+    //   });
   };
 
   return (
